@@ -1,0 +1,5 @@
+C:\Users\Administrator\Desktop\homework\cs4150\galaxy\galaxy\bin\Debug\galaxy.exe.config
+C:\Users\Administrator\Desktop\homework\cs4150\galaxy\galaxy\bin\Debug\galaxy.exe
+C:\Users\Administrator\Desktop\homework\cs4150\galaxy\galaxy\bin\Debug\galaxy.pdb
+C:\Users\Administrator\Desktop\homework\cs4150\galaxy\galaxy\obj\Debug\galaxy.exe
+C:\Users\Administrator\Desktop\homework\cs4150\galaxy\galaxy\obj\Debug\galaxy.pdb
