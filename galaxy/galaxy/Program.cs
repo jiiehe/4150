@@ -10,7 +10,7 @@ namespace galaxy
     {
         static void Main(string[] args)
         {
-            HashSet<String> collect = new HashSet<string>();
+            List<String> collect = new List<string>();
             String content = Console.ReadLine() ;
             String[] info = content.Split(' ');
             int d;
@@ -29,8 +29,6 @@ namespace galaxy
                 count++;
              }
             collect.Remove(collect.ElementAt(0));
-           // Console.WriteLine(MSort(collect, 0, 6, 20));
-            //Console.Read();
             int index = MSort(collect, 0, collect.Count-1, d);
             if (index == -1)
             {
@@ -44,7 +42,7 @@ namespace galaxy
                 long yl;
                 long.TryParse(compare[0], out xl);
                 long.TryParse(compare[1], out yl);
-                HashSet<string> solution = new HashSet<string>();
+                List<string> solution = new List<string>();
 
                 for (int i = 0; i < collect.Count; i++)
                 {
@@ -76,7 +74,7 @@ namespace galaxy
             }
 
         }
-        public static int MSort(HashSet<string> array, int left, int right,int d)
+        public static int MSort(List<string> array, int left, int right,int d)
         {
 
             int center;
@@ -93,12 +91,12 @@ namespace galaxy
                     if (leftresult!=-1&&rightresult==-1)
                     {
                        
-                        return left;
+                        return leftresult;
                     }
                     else if(leftresult==-1&&rightresult!=-1)
                     {
                         
-                        return right;
+                        return rightresult;
                     }
                     else
                     {
@@ -114,12 +112,12 @@ namespace galaxy
                         long.TryParse(rights[1], out y2);
                         if (Math.Pow(x1 - x2, 2) + Math.Pow(y1 - y2, 2) < Math.Pow(d, 2))
                         {
-                            return left;
+                            return leftresult;
                         }
                         else
                         {
-                            HashSet<string> temp = new HashSet<string>();
-                            string[] compare = array.ElementAt(left).Split(' ');
+                            List<string> temp = new List<string>();
+                            string[] compare = array.ElementAt(leftresult).Split(' ');
                             long xl;
                             long yl;
                             long.TryParse(compare[0], out xl);
@@ -140,8 +138,8 @@ namespace galaxy
                                 }
                             }
                            
-                            HashSet<string> Rtemp = new HashSet<string>();
-                            string[] Rcompare = array.ElementAt(center+1).Split(' ');
+                            List<string> Rtemp = new List<string>();
+                            string[] Rcompare = array.ElementAt(rightresult).Split(' ');
                             long Rxl;
                             long Ryl;
                             long.TryParse(Rcompare[0], out Rxl);
@@ -158,18 +156,19 @@ namespace galaxy
                                     Rtemp.Add(array.ElementAt(i));
                                 }
                             }
-                            if (temp.Count == 0&&Rtemp.Count==0)
+                            if (temp.Count == 0&&Rtemp.Count==0||temp.Count==Rtemp.Count)
                             {
                                 return -1;
                             }
+                            
                             temp.Add(array.ElementAt(left));
                             Rtemp.Add(array.ElementAt(center+1));
                             if (temp.Count > Rtemp.Count)
                             {
-                                return left;
+                                return leftresult;
                             }else
                             {
-                                return right;
+                                return rightresult;
                             }
                         }
                     }
