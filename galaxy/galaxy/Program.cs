@@ -124,7 +124,7 @@ namespace galaxy
                             long.TryParse(compare[1], out yl);
                             for (int i = left; i <= center; i++)
                             {
-                                if (left != center)
+                                if (i != leftresult)
                                 {
                                     string[] compare2 = array.ElementAt(i).Split(' ');
                                     long xr;
