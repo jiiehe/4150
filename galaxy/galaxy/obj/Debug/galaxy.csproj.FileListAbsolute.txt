@@ -3,4 +3,3 @@ C:\Users\Administrator\Desktop\homework\cs4150\galaxy\galaxy\bin\Debug\galaxy.ex
 C:\Users\Administrator\Desktop\homework\cs4150\galaxy\galaxy\bin\Debug\galaxy.pdb
 C:\Users\Administrator\Desktop\homework\cs4150\galaxy\galaxy\obj\Debug\galaxy.exe
 C:\Users\Administrator\Desktop\homework\cs4150\galaxy\galaxy\obj\Debug\galaxy.pdb
-C:\Users\Administrator\Desktop\homework\cs4150\galaxy\galaxy\obj\Debug\galaxy.csprojResolveAssemblyReference.cache

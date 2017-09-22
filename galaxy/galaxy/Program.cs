@@ -10,7 +10,9 @@ namespace galaxy
     {
         static void Main(string[] args)
         {
-            List<String> collect = new List<string>();
+            
+            
+            List<Tuple<int,int>> collect = new List<Tuple<int,int>>();
             String content = Console.ReadLine() ;
             String[] info = content.Split(' ');
             int d;
@@ -24,7 +26,13 @@ namespace galaxy
                 {
                     break;
                 }
-                collect.Add(content);
+                String[] info1 = content.Split(' ');
+                int left;
+                Int32.TryParse(info1[0], out left);
+                int right;
+                Int32.TryParse(info1[1], out right);
+                Tuple<int, int> A = new Tuple<int, int>(left,right);
+                collect.Add(A);
                 content = Console.ReadLine();
                 count++;
              }
@@ -37,22 +45,20 @@ namespace galaxy
             }
             else
             {
-                String[] compare = collect.ElementAt(index).Split(' ');
-                long xl;
-                long yl;
-                long.TryParse(compare[0], out xl);
-                long.TryParse(compare[1], out yl);
-                List<string> solution = new List<string>();
+                Tuple<int,int> compare = collect.ElementAt(index);
+                long xl=compare.Item1;
+                long yl=compare.Item2;
+               
+                List<Tuple<int,int>> solution = new List<Tuple<int,int>>();
 
                 for (int i = 0; i < collect.Count; i++)
                 {
                     if (i != index)
                     {
-                        string[] compare2 = collect.ElementAt(i).Split(' ');
-                        long xr;
-                        long yr;
-                        long.TryParse(compare2[0], out xr);
-                        long.TryParse(compare2[1], out yr);
+                        Tuple<int,int> compare2 = collect.ElementAt(i);
+                        long xr=compare2.Item1;
+                        long yr=compare2.Item2;
+                     
                         if (Math.Pow(xl - xr, 2) + Math.Pow(yl - yr, 2) < Math.Pow(d, 2))
                         {
                             solution.Add(collect.ElementAt(i));
@@ -74,7 +80,7 @@ namespace galaxy
             }
 
         }
-        public static int MSort(List<string> array, int left, int right,int d)
+        public static int MSort(List<Tuple<int,int>> array, int left, int right,int d)
         {
 
             int center;
@@ -100,37 +106,33 @@ namespace galaxy
                     }
                     else
                     {
-                        String[] lefts = array.ElementAt(left).Split(' ');
-                        long x1;
-                        long y1;
-                        long.TryParse(lefts[0], out x1);
-                        long.TryParse(lefts[1], out y1);
-                        String[] rights = array.ElementAt(right).Split(' ');
-                        long x2;
-                        long y2;
-                        long.TryParse(rights[0], out x2);
-                        long.TryParse(rights[1], out y2);
+                        Tuple<int,int> lefts = array.ElementAt(left);
+                        long x1=lefts.Item1;
+                        long y1=lefts.Item2;
+                        
+                        Tuple<int,int> rights = array.ElementAt(right);
+                        long x2=rights.Item1;
+                        long y2=rights.Item2;
+                      
                         if (Math.Pow(x1 - x2, 2) + Math.Pow(y1 - y2, 2) < Math.Pow(d, 2))
                         {
                             return leftresult;
                         }
                         else
                         {
-                            List<string> temp = new List<string>();
-                            string[] compare = array.ElementAt(leftresult).Split(' ');
-                            long xl;
-                            long yl;
-                            long.TryParse(compare[0], out xl);
-                            long.TryParse(compare[1], out yl);
+                            List<Tuple<int,int>> temp = new List<Tuple<int,int>>();
+                            Tuple<int,int> compare = array.ElementAt(leftresult);
+                            long xl=compare.Item1;
+                            long yl=compare.Item2;
+                           
                             for (int i = left; i <= center; i++)
                             {
                                 if (i != leftresult)
                                 {
-                                    string[] compare2 = array.ElementAt(i).Split(' ');
-                                    long xr;
-                                    long yr;
-                                    long.TryParse(compare2[0], out xr);
-                                    long.TryParse(compare2[1], out yr);
+                                    Tuple<int,int> compare2 = array.ElementAt(i);
+                                    long xr=compare2.Item1;
+                                    long yr=compare2.Item2;
+                                    
                                     if (Math.Pow(xl - xr, 2) + Math.Pow(yl - yr, 2) < Math.Pow(d, 2))
                                     {
                                         temp.Add(array.ElementAt(i));
@@ -138,19 +140,17 @@ namespace galaxy
                                 }
                             }
                            
-                            List<string> Rtemp = new List<string>();
-                            string[] Rcompare = array.ElementAt(rightresult).Split(' ');
-                            long Rxl;
-                            long Ryl;
-                            long.TryParse(Rcompare[0], out Rxl);
-                            long.TryParse(Rcompare[1], out Ryl);
+                            List<Tuple<int,int>> Rtemp = new List<Tuple<int,int>>();
+                            Tuple<int,int> Rcompare = array.ElementAt(rightresult);
+                            long Rxl=Rcompare.Item1;
+                            long Ryl=Rcompare.Item2;
+                            
                             for (int i = center+2; i <= right; i++)
                             {
-                                string[] Rcompare2 = array.ElementAt(i).Split(' ');
-                                long Rxr;
-                                long Ryr;
-                                long.TryParse(Rcompare2[0], out Rxr);
-                                long.TryParse(Rcompare2[1], out Ryr);
+                                Tuple<int,int> Rcompare2 = array.ElementAt(i);
+                                long Rxr=Rcompare2.Item1;
+                                long Ryr=Rcompare2.Item2;
+                                
                                 if (Math.Pow(Rxl - Rxr, 2) + Math.Pow(Ryl - Ryr, 2) < Math.Pow(d, 2))
                                 {
                                     Rtemp.Add(array.ElementAt(i));
